@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}{{'Notes'}}{% endblock %}
+{% block content %}
+    {% if latest_notes_list %}
+        {% for note in latest_notes_list %}
+            <div class="col-md-3 m-auto">
+                <div class="card mb-3 mt-3"> <!--card display with margin bottom 3-->
+                    <div class="card-body text-center">            
+                        <h3>{{note.note_name}}</h3>
+                        <small>created on :<br>{{note.note_date_created}}</small>
+                        <p class="lead">{{note.note_desc}}</p>
+                        <!--pass note.id value to edit.html-->
+                        <a href="{% url 'note:edit_note' note.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{% url 'note:delete_note' note.id %}" class="btn btn-secondary btn-sm confirmation">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3 class="text-center text-primary pt-5 pb-5">No Notes Available</h3>
+    {% endif %}
+    <hr>
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-auto">
+            <a href="{% url 'note:create_note'%}" class="btn btn-outline-success btn-sm mb-3">Create Note</a>
+        </div>
+        <div class="col-sm-auto">
+            <a href="{% url 'note:show_all' %}" class="btn btn-outline-info btn-sm mb-3">Show All Notes</a>
+        </div>
+    </div>
+
+{% endblock %}

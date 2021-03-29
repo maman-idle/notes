@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{'Create a Note'}}{% endblock %}
+{% block content %}
+    <form action="{% url 'note:notes' %}" method="POST">
+        {% csrf_token %}
+            <div class="col-3 mt-3">
+                <input class="form-control" type="text" name="noteName" placeholder="Note's Name.." required="required"/>
+            </div>
+            <div class="col-6 mt-3">
+                <textarea class="form-control" name="noteDesc" style="resize: none;" placeholder="To do.." required="required"></textarea>
+            </div>
+        </div>
+        <input type="submit" value="Create" class="btn btn-sm btn-outline-success mt-3">
+    </form>
+</div>
+{% endblock %}

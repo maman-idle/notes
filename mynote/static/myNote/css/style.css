@@ -1,0 +1,5 @@
+.grad1{
+    height: 100rem;
+    background-color: red;
+    background-image: linear-gradient(to bottom left, rgb(4, 16, 124), limegreen);
+}
